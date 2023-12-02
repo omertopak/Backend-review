@@ -1,0 +1,12 @@
+ORM nedir?
+oop to sql
+orm sql veritabani bagimsiz calismayi saglar ve orm araci gorev gorur. yaptigimiz yapilari sql e uygun hale GeolocationPositionError
+SEQUELIZE da bu ise yarar.
+
+sequelize icin => model to sql data type da diyebiliriz
+
+ornek test ortaminda sqlite canlida postgresql calissin istersem bunu yapamam. cunku kod yapilari farkli. bunu yasamam icin ortakbir cozum olan sequelize kullaniyoruz. sequelize ile bir veritabanondan baska bir veri tabananina kolayca gecebilirim. ayrica model tabanli calismak icinde sequelize kullaniyoruz.
+    -model yazabilmek
+    -birden fazla veritabani ile ayni anda calisabilmek
+    -js mantiginda kod yazabilmek icin (sql kullanmamak icin)
+

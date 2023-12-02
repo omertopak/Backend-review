@@ -1,0 +1,2 @@
+echo PORT=8000 > .env
+echo SQLITE=./db.sqlite3 >> .env    (ekleme)
