@@ -1,0 +1,7 @@
+router mantigini kurmak icin app calistimanin anlami yok bunun icin express router kullanilmali.
+
+echo PORT=8000 > .env
+
+
+
+route olusturduk ve query ile sorgulama yaparak giris iznini verdik. bu sebeple app.use kullandik sebebi ise middleware ile query deki sorgu islemini yapmamiz
