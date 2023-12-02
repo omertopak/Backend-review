@@ -23,6 +23,7 @@ const PORT = process.env.PORT || 8000
 //?     }
 //? })
 /* ------------------------------------------------------- */
+//her hata icin ayri try catch yazmamiz gerekli bu yontemle
 //? app.get('/user/:id', (req, res, next) => {
 
 //?     try {
@@ -81,7 +82,7 @@ app.get('/async', asyncHandler(async (req, res, next) => {
 }))
 /* ------------------------------------------------------- */
 /* ------------------------------------------------------- */
-
+//! sen 4 parametreli middleware yaz ben hata olursa buraya gondereyim.Yani hata yakalamaya ozel bir middleware.
     const errorHandler = (err, req, res, next) => {
 
     const statusCode = res.errorStatusCode ?? 500

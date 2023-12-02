@@ -31,3 +31,7 @@ app.use(express.text())
 
 form icin;(form-encode)
 app.use(express.urlencoded({extended: true}))
+
+statik dosyalar icin;
+/* Call staticFiles from real-path */
+app.use('/img', express.static('./public/images')) //!  /img ile aranan dosyalari sadece benim verdigim dosya uzantisi icinden al.
