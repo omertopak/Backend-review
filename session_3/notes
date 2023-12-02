@@ -1,7 +1,33 @@
 router mantigini kurmak icin app calistimanin anlami yok bunun icin express router kullanilmali.
 
+//! npm i express-async-handler
+
 echo PORT=8000 > .env
 
 
 
 route olusturduk ve query ile sorgulama yaparak giris iznini verdik. bu sebeple app.use kullandik sebebi ise middleware ile query deki sorgu islemini yapmamiz
+
+errors js i calistirmak icn nodemon error.js yaparak calistiririz.
+    hata mesajlarini json formatinda vermeyi amacliyoruz.
+    try catch hata yonetimi icin kullanacagiz.
+
+    const errorHandler = (err, req, res, next) => {
+
+        PARAMETRE SAYISI 4 TANE OLDUGU ICIN ERROR HANDLER OLDUGUNU SISTEM BILECEK VE ILK PARAMETRE ERROR HANDLER OLACAK.
+
+}
+
+error handler her zaman en asagida kalmali
+
+async error handler da
+
+
+///
+app.use(express.json()) app icinde bunu calistirmak body deki json veriyi alabilir hale gelir ve bu basta olmali yani express json i aktif hale getirdik
+
+body deki text bir veri icinse; 
+app.use(express.text())
+
+form icin;(form-encode)
+app.use(express.urlencoded({extended: true}))
