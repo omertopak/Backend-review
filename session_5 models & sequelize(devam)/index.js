@@ -10,11 +10,21 @@ require("dotenv").config();
 const PORT = process.env.PORT || 8000;
 
 /* ------------------------------------------------------- */
-app.use(express.json()) //?gelen veriyi otomatik tur donusumu yapar
+// Accept json data & convert to object:
+app.use(express.json())
+
+/* ------------------------------------------------------- */
+
+//* https://sequelize.org/docs/v6/getting-started/
+const { Sequelize, DataTypes } = require('sequelize')
+//* Where is DB (DB Connection Details):
+// const sequelize = new Sequelize('postgres://postgres:12345678@localhost:5432/todoCH14') // $ npm i pg pg-hstore
+// const sequelize = new Sequelize('sqlite:./db.sqlite3')
+const sequelize = new Sequelize('sqlite:' + (process.env.SQLITE || './db.sqlite3'))
 
 
 /* ------------------------------------------------------- */
-//? >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>HATA YONETIMI >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
 const errorHandler = (err, req, res, next) => {
     const errorStatusCode = res.errorStatusCode ?? 500
     console.log('errorHandler runned.')

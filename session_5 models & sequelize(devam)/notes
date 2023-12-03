@@ -41,6 +41,3 @@ sonrasinda veri tabanina baglanilmali;
         CRUD
         crud islemlerinin yapildigi sayfada database islemleri yapilacagi icin require "databaseName" islemi crud sayfasinda,
         router ise app veya index sayfasinda require edilir. 
-
-
-tum model ve routerlar olusturulduktan sonra parcaladik ve app.js i sade hale getirdik sonrasinda dbconnected dosyasinda hata aldik bunu bir middleware haline getirmedik cunku modeller olusmadan calisma ihtimali vardi ve bu sekilde calisirsa sync i eksik yerine getirebilirdi bu sebeple onu fonksiyon olarak tanimladik ve app.js te en altta calistirdik bunun sebebi hersey olsutuktan sonra calismasini saglamakti.
