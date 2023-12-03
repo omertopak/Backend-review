@@ -3,3 +3,4 @@
 // npm i express-async-handler
 // npm i sequelize sqlite3  (sequelize orm-model yapisi icin bir conventer gibi calisir ve sqlite3 ye yollar.)
 //     =>const{Sequelize,Datatypes} = require('sequelize')
+// npm i express-async-errors   bu modulu sadece controllerda require yaptik ve yazdigimiz error handlera gondermeyi basardik
