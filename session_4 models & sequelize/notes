@@ -1,6 +1,6 @@
 ORM nedir?
 oop to sql
-orm sql veritabani bagimsiz calismayi saglar ve orm araci gorev gorur. yaptigimiz yapilari sql e uygun hale GeolocationPositionError
+orm sql veritabani bagimsiz calismayi saglar ve orm araci gorev gorur. yaptigimiz yapilari sql e uygun hale getirir.
 SEQUELIZE da bu ise yarar.
 
 sequelize icin => model to sql data type da diyebiliriz
@@ -10,3 +10,34 @@ ornek test ortaminda sqlite canlida postgresql calissin istersem bunu yapamam. c
     -birden fazla veritabani ile ayni anda calisabilmek
     -js mantiginda kod yazabilmek icin (sql kullanmamak icin)
 
+sequelize i calistirdik ve .db.sqlite3 isminde db olusturduk
+const { Sequelize, DataTypes } = require('sequelize')
+Where is DB (DB Connection Details):
+const sequelize = new Sequelize('sqlite:' + (process.env.SQLITE || './db.sqlite3'))
+
+sequlize da model olusturma icin 
+    const modelismi = sequelize.define('tabloismi',{
+        id:{
+            // https://sequelize.org/docs/v7/models/data-types/
+        }
+    })
+
+olusturduktan sonra;
+    // Synchronization:
+    //! SYNC MUST RUN ONCE!
+    // sequelize.sync() // CREATE TABLE
+    // sequelize.sync({ force: true }) // DROP & CREATE
+    sequelize.sync({ alter: true }) // TO BACKUP & DROP & CREATE & FROM BACKUP  
+
+sonrasinda veri tabanina baglanilmali;
+    // Connect:
+    sequelize.authenticate()
+    .then(() => console.log('* DB Connected *'))
+    .catch((err) => console.log('* DB Not Connected *', err))
+
+
+
+    sonrasinda router islemleri yapilir;
+        CRUD
+        crud islemlerinin yapildigi sayfada database islemleri yapilacagi icin require "databaseName" islemi crud sayfasinda,
+        router ise app veya index sayfasinda require edilir. 
