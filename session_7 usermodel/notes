@@ -98,3 +98,14 @@ REMEMBER ME?
             }
 
 buradaki session cookie islemleri herhangi bi kayit yapmaz sadece session cookie ye gider ve orada json verimizi kaydeder ve silinecegi zamanin kaydini (istege bagli) da yapar.
+
+
+logout session silme burada sessiondaki hersey silinmez cunku domain e gore siler.
+      logout: async (req, res) => {
+              // Set session to null:
+              req.session = null
+              res.status(200).send({
+                  error: false,
+                  message: 'Logout OK'
+              })
+          },
