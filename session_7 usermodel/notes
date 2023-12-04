@@ -1,40 +1,35 @@
-mongo db de model, tabo siniri yok.
-mongo db de iliski kurma yok(relation)
-mongoose mongodb de model ve iliski kurmamizi saglayacak.
-ORM mantigi yok.
+referans i verdikten sonra 
+  blogCategoryId: {
+        type: mongoose.Schema.ObjectId, // Relational ObjectId
+        ref: 'BlogCategory', // ModelName
+        ^^^^^^^^^^^^^^^^^^^
+        required: true,
+    },
 
-errorhandler i kurduktan sonra hatalar "controller"dan giden ve gelen sonuclara gore belirlenecegi icin express-async-errors orada calismali ve bu sebeple kontrol de orada yapilmali. sayfanin en ustune require etmek yeterli.
+bu referansi blog cagirip gormek istefdimizde sadece id gelir fakat biz alt tablodan use tablo verisi istersek yani id ye ait categorynin tum ozelliklerini gormek istersek get istegi attimiz linkteki read altina;
+  read: async (req, res) => {
 
-mongoose ise dbconnection saglayacagi icin dbconnection saglayan dosyada cagrilmali ve kurulum yapilmali
-    const mongoose = require('mongoose')
-      const MONGODB = process.env.MONGODB || 'mongodb://localhost:27017/'
-    ya;
-      mongoose.connect(MONGODB)
-    yada ;
-      mongoose.connect(process.env.MONGODB)
-      .then(() => console.log(' * DB Connected * '))
-      .catch((err) => console.log(' * DB Not Connected * ', err)) 
+        // req.params.postId
+        // const data = await BlogPost.findById(req.params.postId)
+        const data = await BlogPost.findOne({ _id: req.params.postId }).populate('blogCategoryId') // get Primary Data
+                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+        res.status(200).send({
+            error: false,
+            result: data
+        })
 
-app.js de app.use olarak cagrilmaz cunku middleware degildir ve calismasi yeterlidir.
+    },
+seklinde populate() fonksiyonu cagirilarak neyin populate edilecegi belirtilmelidir.
 
 
-MODEL
-    model de mongoose cagrilir cunku modelleme orada yapilicak.
-    const mongoose = require('mongoose')
-    const nameSchema = new mongoose.Shema({
-        _id: //?  '_' PROTECTED ve AUTO CREATED
-    })
+category adi altinda listeleme icin find ile filter yapilabilir;
+  listCategoryPosts: async (req, res) => {
 
-    index:bir sutuna daha hizli erismek istersek index verilmeli. index ram de saklanir.
-
-    model olustururken once schema tanimlanir sonrasinda bu schema modele mongoose.model ile donusturulur. modeller pascalcase olur.
-
-    iki farkli export yontemi;
-    1. yontem
-        module.exports = {
-            key1:'value'
-            key2:'value'
-        }
-    2.yontem //? bu yontem aralarda export imkani verir.
-        module.exports.key1 = 'value'
-        module.exports.key2 = 'value'
+        const data = await BlogPost.find({ blogCategoryId: req.params.categoryId }).populate('blogCategoryId')
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        res.status(200).send({
+            error: false,
+            count: data.length,
+            result: data
+        })
+    },
