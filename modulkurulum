@@ -5,3 +5,6 @@
 //     =>const{Sequelize,Datatypes} = require('sequelize')
 // npm i express-async-errors   bu modulu sadece controllerda require yaptik ve yazdigimiz error handlera gondermeyi basardik
 // npm i mongoose
+//* $ npm i cookie-session
+
+
