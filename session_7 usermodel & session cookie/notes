@@ -91,7 +91,7 @@ app.use(session({
                 }
     seklinde tanimlanir.
 REMEMBER ME?
-    // Set Cookie:
+    // Set Cookie :
         if (req.body?.rememberMe) {
             // Set Cookie maxAge:
             req.sessionOptions.maxAge = 1000 * 60 * 60 * 24 * 3 // 3 Days
