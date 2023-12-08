@@ -11,6 +11,7 @@ require('express-async-errors')
 
 // Call Models:
 const { BlogCategory, BlogPost } = require('../models/blogModel')
+const { search } = require('../routes/userRoute')
 
 
 // ------------------------------------------
@@ -82,9 +83,32 @@ module.exports.BlogCategory = {
 // ------------------------------------------
 module.exports.BlogPost = {
 
+    
+
     list: async (req, res) => {
 
-        const data = await BlogPost.find().populate('blogCategoryId') // get Primary Data
+        //SEARCHING & SORTING & PAGINATION
+
+        //?Searching : URL?search[key1]=value1&search[key2]=value2
+                //console.log(req.query);
+
+                const search = req.query?.search || {}
+                console.log(search);
+
+                // const data = await BlogPost.find({title:'test 0 title'})
+                //const data = await BlogPost.find(search)
+
+                // const data = await BlogPost.find({title:{$regex:'test 0', $options:'i'}}) //!regex ile aramayi insensitive olarak ve icinde gecen herhangi bir datayai yakalayarak yaptik hepsini yazma sartimiz ortadan kalkti.
+                //const data = await BlogPost.find({title:{$regex:'test 0', $options:'i'}})
+                
+                for (let key in search) search[key] = { $regex: search[key], $options: 'i' } // i: case Insensitive
+                //const data = await BlogPost.find(search)
+
+                // console.log(search)
+                //const data = await BlogPost.find().populate('blogCategoryId') // get Primary Data
+
+        //? Sorting
+
 
         res.status(200).send({
             error: false,
