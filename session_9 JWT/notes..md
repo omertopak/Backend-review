@@ -7,3 +7,7 @@ nasil calisir?
     backend jwt yi frontende gonderir
     frontend bu kodu saklar ve backende header da bu kodu gonderir (Bearer)
     gelen kullanici bilgisine gore kullanici yetkilendirilir.
+    
+    30dk -> access token ->username firstname lastname profileurl, isAdmin, isLogin
+    72sa -> refresh token-> id, password
+    refresh token access token i yeniler.

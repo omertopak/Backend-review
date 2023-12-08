@@ -6,6 +6,6 @@
 // npm i express-async-errors   bu modulu sadece controllerda require yaptik ve yazdigimiz error handlera gondermeyi basardik
 // npm i mongoose
 //* $ npm i cookie-session
-//
+// nmp i jsonwebtoken
 
 
