@@ -41,3 +41,5 @@ nasil calisir?
                             refresh: refreshToken
                         }
                     })
+
+    response ile access ve refresh token geldikten sonra autherization altinda header ile bearer kodu ile gelecek olan kisimdayiz
