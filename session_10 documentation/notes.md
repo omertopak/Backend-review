@@ -99,3 +99,18 @@
                 }
              }
             */
+
+    Model kismi icin ;
+    swaggerjs dosyamizin altina definition yapilir.
+        modeller;
+        "Department": require('./src/models/department.model').schema.obj,
+    bu yontemle otomatik olarak swagger in istedigi formatta gelir.
+
+        #swagger.parameters['body'] = {
+                in: 'body',
+                required: 'true',
+                schema: {
+                    $ref: '#/definitions/Personnel'
+                }}
+
+        $ref: '#/definitions/Personnel' kisa yoldan model tanimi yapma her degisiklikte manuel yazmak yerine otomatik olarak olusturdugumuz yerden cektik.
