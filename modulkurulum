@@ -7,5 +7,5 @@
 // npm i mongoose
 //* $ npm i cookie-session
 // nmp i jsonwebtoken
-
-
+// npm i morgan     (https://expressjs.com/en/resources/middleware/morgan.html)
+// npm i swagger-autogen    (https://swagger-autogen.github.io/docs/)
