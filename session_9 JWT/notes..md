@@ -43,3 +43,21 @@ nasil calisir?
                     })
 
     response ile access ve refresh token geldikten sonra autherization altinda header ile bearer kodu ile gelecek olan kisimdayiz
+            const auth = req.headers?.authorization || null // get Authorization
+            const accessToken = auth ? auth.split(' ')[1] : null // get JWT
+    req.headers?.authorization ile gelen token alinir ve gelen token [ bearer token ] seklinde geldigi icin split ile 1. kismi aldik ve verify islemini;
+            //jwt.verify (accessToken, secret_KEY , function(err, user){retun DATA})
+    verify isleminde 3. secenek ya err doner ya da data doner. Data donerse controllerda olusturulan access_data doner.
+            jwt.verify (accessToken, process.env.ACCESS_KEY, function(err, user) {
+              if (err) {
+               req.user = null
+               console.log('JWT Login: NO')
+              } else {
+             req.isLogin = true
+                 req.user = user
+                  //eq.user = user.isActive ? user : null
+                 console.log('JWT Login: YES')
+         }
+            })
+
+    yaptik.
