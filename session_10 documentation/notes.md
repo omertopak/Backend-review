@@ -114,3 +114,66 @@
                 }}
 
         $ref: '#/definitions/Personnel' kisa yoldan model tanimi yapma her degisiklikte manuel yazmak yerine otomatik olarak olusturdugumuz yerden cektik.
+
+
+//? REDOC
+    // npm i redoc-express
+
+    //?redoc i cagirdik
+    const redoc = require('redoc-express')
+
+    //?dosyayi ekrana dumduz bastik
+    app.use('/docs/json', (req, res) => {
+        res.sendFile('swagger.json', { root: '.' })
+    })
+
+
+    app.use('/docs/redoc', redoc({
+    specUrl: '/docs/json',  //?render edilecek url
+    title: 'API Docs',  //?baslik
+    // redocOptions: {    //?  bu kisim tamamen gorsel tema eklentisi
+    //     theme: {    
+    //         colors: {
+    //             primary: {
+    //                 main: '#6EC5AB'
+    //             }
+    //         },
+    //         typography: {
+    //             fontFamily: `"museo-sans", 'Helvetica Neue', Helvetica, Arial, sans-serif`,
+    //             fontSize: '15px',
+    //             lineHeight: '1.5',
+    //             code: {
+    //                 code: '#87E8C7',
+    //                 backgroundColor: '#4D4D4E'
+    //             }
+    //         },
+    //         menu: {
+    //             backgroundColor: '#ffffff'
+    //         }
+    //     }
+    // }
+}))
+
+
+
+//? son olarak kullanicilar yonlendirilir.
+// Routes:
+
+// HomePath:
+        app.all('/', (req, res) => {
+            res.send({
+                error: false,
+                message: 'Welcome to PERSONNEL API',
+                api: {
+                    documents: {
+                        swagger: 'http://127.0.0.1:8000/docs/swagger',
+                        redoc: 'http://127.0.0.1:8000/docs/redoc',
+                        json: 'http://127.0.0.1:8000/docs/json',
+                    },
+                    contact: 'clarusway.com'
+                },
+                // session: req.session,
+                isLogin: req.isLogin,
+                user: req.user
+            })
+        })

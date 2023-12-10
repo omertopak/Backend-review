@@ -9,3 +9,5 @@
 // nmp i jsonwebtoken
 // npm i morgan     (https://expressjs.com/en/resources/middleware/morgan.html)
 // npm i swagger-autogen    (https://swagger-autogen.github.io/docs/)
+// npm i swagger-ui-express
+// npm i redoc-express
