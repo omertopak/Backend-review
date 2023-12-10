@@ -69,5 +69,33 @@
 
     tum ayarlar yapildiktan sonra terminale de node swagger.js calistirilir.
     aslinda node file_name.js calistirilir.
+    >node swagger
 
     bu dosya json olusturan bir dosyadir ve json verimizi olusturduk.
+
+    artik index.js de swagger-ui calistirilmalidir.
+    npm i swagger-ui-express
+        const swaggerUi = require('swagger-ui-express')
+        const swaggerJson = require('./swagger.json')
+        app.use('/docs/swagger', swaggerUi.serve, swaggerUi.setup(swaggerJson, { swaggerOptions: { persistAuthorization: true } }))
+        app.use('hangi urlden ulasmak isteriz', caliskomutu, neye gore calisacak(swaggerFile, { JWT icin ayar kismi }))
+
+    artik bu url linkinde swagger dosyamiza ulasabiliriz.
+
+    routes da her degisiklik sonrasi terminal de node swagger tekrar calistirilmalidir.
+    kullaniciya extra bilgi verme kismini swagger ui ile yapariz notlarda var.
+             /*
+            #swagger.tags = ['Authentication']
+            #swagger.summary = 'JWT: Login'
+            #swagger.description = 'Login with username and password'
+            _swagger.deprecated = true
+            _swagger.ignore = true
+            #swagger.parameters['body'] = {
+                in: 'body',
+                required: true,
+                schema: {
+                    username: 'test',
+                    password: '1234'
+                }
+             }
+            */
