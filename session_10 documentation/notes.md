@@ -57,7 +57,7 @@
         security: [{ "JWT": true }],
 
 
-        //?routes nerede toplaniyor.
+        //?routes nerede toplaniyor..
             const routes = ['./index.js']
         //?bana verecegi swagger json dosyasini nerede verecek
             const outputFile = './swagger.json'
