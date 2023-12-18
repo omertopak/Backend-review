@@ -1,8 +1,8 @@
 "use strict"
 
-const express = require('express')
-const router = express.Router()
-
+// const express = require('express')
+// const router = express.Router()
+const router = require('express').Router()
 
 const func = (req,res,next) =>{
     const {user} = req.query
