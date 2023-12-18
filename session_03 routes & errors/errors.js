@@ -88,12 +88,14 @@ app.get('/async', asyncHandler(async (req, res, next) => {
     const statusCode = res.errorStatusCode ?? 500
 
     console.log('errorHandler runned')
+    console.log(err)
 
     res.status(statusCode).send({ 
         error: true, // special data
         message: err.message, // Error string Message
         cause: err.cause, // Error optional cause
-        stack: err.stack // Error Details.
+        stack: err.stack, // Error Details.
+        umut: err.umut
     })
 }
 //? for run errorHandler call in use.
