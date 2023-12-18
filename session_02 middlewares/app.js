@@ -5,7 +5,7 @@ const app = express() //! run application on express.
 /* ENV */
 require('dotenv').config()  //!process.env bu modul ile yakaladi
 const PORT = process.env.PORT || 8000
-/*--------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------
 
 // Middleware:
 app.get('/', (req, res, next) => {
@@ -90,6 +90,11 @@ app.get('/', (req, res) => {
         message: 'next route'
     })
 })
+app.get('/', (req, res) => {
+    res.send({
+        message: 'next route 2'
+    })
+})
 /*--------------------------------------------------------------------------*/
 //!import
 //const [ middleFunction1, middleFunction2 ] = require('./middlewares.js')    //!ya da 
@@ -104,4 +109,4 @@ app.get('/*', (req, res) => {
 })
 
 /*--------------------------------------------------------------------------*/
-app.listen(PORT,()=> console.log(`Running on ${PORT}`))
+app.listen(PORT,()=> console.log(`Running on http://127.0.0.1:${PORT}`))
