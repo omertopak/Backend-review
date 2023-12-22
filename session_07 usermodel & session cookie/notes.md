@@ -17,8 +17,8 @@ bu referansi blog cagirip gormek istefdimizde sadece id gelir fakat biz alt tabl
             error: false,
             result: data
         })
-
     },
+    
 seklinde populate() fonksiyonu cagirilarak neyin populate edilecegi belirtilmelidir.
 
 
